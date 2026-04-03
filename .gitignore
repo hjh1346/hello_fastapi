@@ -1,0 +1,6 @@
+cat > .gitignore << 'EOF'
+.vscode-server/
+venv/
+__pycache__/
+*.pem
+EOF
