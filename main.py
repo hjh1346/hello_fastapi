@@ -1,8 +1,6 @@
 # main.py
 
 
-
-
 from fastapi import Depends, FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -72,4 +70,11 @@ def postNew(writer: str = Form(...), title: str = Form(...), content: str = Form
 
 
     # 특정 경로로 요청을 다시 하도록 리다일렉트 응답을 준다.
+    return RedirectResponse("/post", status_code=302)
+
+@app.get("/post/delete/{num}") # {num} 경로변수 선언 (path variable)
+def delete(num: int, db: Session = Depends(get_db)):
+    query = text("DELETE FROM post WHERE num = :num")
+    db.execute(query, {"num": num})
+    db.commit()    
     return RedirectResponse("/post", status_code=302)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>templates/post/list.html</template></title>
+    <title>글 목록</title>
 </head>
 <body>
     <div class="container">
@@ -17,6 +17,7 @@
                 <th>제목</th>
                 <th>내용</th>
                 <th>작성일</th>
+                <th>삭제</th>
             </tr>
         </thead>
         <tbody>
@@ -27,14 +28,15 @@
                 <td>{{ post.title }}</td>
                 <td>{{ post.content }}</td>
                 <td>{{ post.created_at }}</td>
+                <td><a href="/post/delete/{{ post.num }}">삭제</a></td>
             </tr>
             {% else %}
             <tr>
-                <td colspan="5">등록된 글이 없습니다.</td>
+                <td colspan="6">등록된 글이 없습니다.</td>
             </tr>
             {% endfor %}
         </tbody>
-    </table>
+        </table>
     </div>
 </body>
 </html>
