@@ -1,3 +1,4 @@
+
 # main.py
 
 
@@ -78,3 +79,4 @@ def delete(num: int, db: Session = Depends(get_db)):
     db.execute(query, {"num": num})
     db.commit()    
     return RedirectResponse("/post", status_code=302)
+
